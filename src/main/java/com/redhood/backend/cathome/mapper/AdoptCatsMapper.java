@@ -1,6 +1,8 @@
 package com.redhood.backend.cathome.mapper;
 
 import com.redhood.backend.cathome.model.AdoptCatsPO;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -18,6 +20,7 @@ import java.util.List;
  * @Version:
  * @Description:
  */
+
 @Repository
 public interface AdoptCatsMapper {
     @Select("SELECT * FROM adopt_cats")

@@ -5,6 +5,7 @@ import com.redhood.backend.cathome.model.ResultBean;
 import com.redhood.backend.cathome.model.User;
 import com.redhood.backend.cathome.service.AdoptCatService;
 import com.redhood.backend.cathome.service.impl.AdoptCatServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ import java.util.List;
  * @Version:
  * @Description:
  */
+@Slf4j
 @RestController
 @RequestMapping("/adopt")
 public class AdoptController {
@@ -27,8 +29,7 @@ public class AdoptController {
 
     @GetMapping("/allAdoptCat")
     public Object getAllAdoptCat() {
-       List<AdoptCatsPO> cats = adoptCatService.searchAll();
-
+        List<AdoptCatsPO> cats = adoptCatService.searchAll();
         return ResultBean.success(cats);
     }
 }

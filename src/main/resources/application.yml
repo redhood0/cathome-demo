@@ -59,8 +59,12 @@ spring:
   devtools:
     restart:
       enable: true
-#  http:
-#    encoding:
-#      charset: UTF-8
-#      force: true
-#      enabled: true
+        #http:
+        #        ##    encoding:
+      #        ##      charset: UTF-8
+      #      ##      force: true
+      #      ##      enabled: true
+
+logging:
+  file:
+    path: ./target/logs

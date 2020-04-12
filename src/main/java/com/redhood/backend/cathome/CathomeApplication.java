@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
-@MapperScan({"com.redhood.backend.cathome.mapper"})
+@MapperScan({"com.redhood.backend.cathome.mapper","com.redhood.backend.cathome.mp_generator.c.mapper"})
 @ServletComponentScan("com.redhood.backend.cathome.filter")
 public class CathomeApplication {
 

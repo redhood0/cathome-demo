@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry
+            location="C:\Users\redhood\3D Objects\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar"/>
+
+    <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3">
+        <!-- 生成的 Java 文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化 Java 代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化 XML 代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <!-- 生成mysql带有分页的sql的插件  这个可以自己写，-->
+        <!--        <plugin type="generator.MysqlPaginationPlugin" />-->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 自定义的注释规则，继承 DefaultCommentGenerator 重写 一些方法 -->
+
+        <commentGenerator type="com.generator.NewbatisGenerator">
+            <!-- 是否去除自动生成日期的注释 true：是 ： false:否 -->
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除所有自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+<!--            &lt;!&ndash; 添加 db 表中字段的注释 &ndash;&gt;-->
+<!--            <property name="addRemarkComments" value="true"/>-->
+        </commentGenerator>
+
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/cathome_demo?useSSL=false&amp;characterEncoding=utf8&amp;serverTimezone=UTC"
+                        userId="root"
+                        password="12345">
+            <!--            防止找错库-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+            <!-- 设置 useInformationSchema 属性为 true -->
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+
+        <!--生成entity类存放位置-->
+        <javaModelGenerator targetPackage="com.redhood.backend.cathome.test_generator.entity"
+                            targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <!-- 是否对modal添加构造函数 -->
+            <property name="constructorBased" value="true"/>
+            <!-- 建立modal对象是否不可改变 即生成的modal对象不会有setter方法，只有构造方法 -->
+            <property name="immutable" value="false"/>
+        </javaModelGenerator>
+
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="com.redhood.backend.cathome.test_generator.mapper"
+                         targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.redhood.backend.cathome.test_generator.dao"
+                             targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table schema="cathome_demo" tableName="user" domainObjectName="User">
+        </table>
+    </context>
+</generatorConfiguration>
